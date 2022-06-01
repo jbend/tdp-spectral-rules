@@ -1,0 +1,306 @@
+{
+  "rules": {
+    "openapi-v3-info-title": {
+      "description": "Ensures that all OpenAPIs have a information object title.",
+      "message": "The info object should have a title.",
+      "given": "$.info",
+      "severity": "error",
+      "recommended": true,
+      "type": "style",
+      "formats": [
+        "oas3"
+      ],
+      "then": {
+        "field": "title",
+        "function": "truthy"
+      }
+    },
+    "openapi-v3-info-title-max-length": {
+      "description": "Ensures that all OpenAPIs information titles are not longer than 50 characters.",
+      "message": "The info object title should not be more than 50 characters.",
+      "given": "$.info",
+      "severity": "error",
+      "recommended": true,
+      "type": "style",
+      "formats": [
+        "oas3"
+      ],
+      "then": {
+        "field": "title",
+        "function": "length",
+        "functionOptions": {
+          "max": 50
+        }
+      }
+    },
+    "openapi-v3-info-title-word-check": {
+      "description": "Ensures that all OpenAPIs info object title do not contain certain words.",
+      "message": "The info object title should not contain the words REST, Public, and Developer.",
+      "given": "$.info.title",
+      "severity": "error",
+      "recommended": true,
+      "type": "style",
+      "formats": [
+        "oas3"
+      ],
+      "then": {
+        "function": "pattern",
+        "functionOptions": {
+          "notMatch": "\\b(REST|Public|Developer)\\b"
+        }
+      }
+    },
+    "openapi-v3-info-title-in-kebab-case": {
+      "description": "Ensures that all OpenAPIs information title are in Kebab case.",
+      "message": "The info object title needs to be in Kebab case.",
+      "given": "$.info.title",
+      "then": {
+        "function": "pattern",
+        "functionOptions": {
+          "match": "^[a-z][a-z0-9\\-]*$"
+        }
+      },
+      "type": "style",
+      "recommended": true,
+      "formats": [
+        "oas2",
+        "oas3"
+      ],
+      "severity": "error"
+    },
+    "openapi-v3-info-summary": {
+      "description": "Ensures that all OpenAPIs have a information object summary.",
+      "message": "The info object should have a summary.",
+      "given": "$.info",
+      "severity": "error",
+      "recommended": true,
+      "type": "style",
+      "formats": [
+        "oas3"
+      ],
+      "then": {
+        "field": "summary",
+        "function": "truthy"
+      }
+    },
+    "openapi-v3-info-summary-max-length": {
+      "description": "Ensures that all OpenAPIs information object summary are not too long.",
+      "message": "The info object summary should be less than 50 characters.",
+      "given": "$.info",
+      "severity": "error",
+      "recommended": true,
+      "type": "style",
+      "formats": [
+        "oas3"
+      ],
+      "then": {
+        "field": "summary",
+        "function": "length",
+        "functionOptions": {
+          "max": 50
+        }
+      }
+    },
+    "openapi-v3-info-summary-word-check": {
+      "description": "Ensures that all OpenAPIs information object summary do not contain some words.",
+      "message": "The info object summary should not contain the words REST, Public, or Developer.",
+      "given": "$.info.summary",
+      "severity": "error",
+      "recommended": true,
+      "type": "style",
+      "formats": [
+        "oas3"
+      ],
+      "then": {
+        "function": "pattern",
+        "functionOptions": {
+          "notMatch": "\\b(REST|Public|Developer)\\b"
+        }
+      }
+    },
+    "openapi-v3-info-description": {
+      "description": "Ensures that all OpenAPIs have a information description.",
+      "message": "The info object should have a description.",
+      "given": "$.info",
+      "severity": "error",
+      "recommended": true,
+      "type": "style",
+      "formats": [
+        "oas3"
+      ],
+      "then": {
+        "field": "description",
+        "function": "truthy"
+      }
+    },
+    "openapi-v3-info-description-max-length": {
+      "description": "Ensures that all APIs descriptions are under a specific length.",
+      "message": "The info object description should be less than 250 characters.",
+      "given": "$.info",
+      "severity": "error",
+      "recommended": true,
+      "type": "style",
+      "formats": [
+        "oas3"
+      ],
+      "then": {
+        "field": "description",
+        "function": "length",
+        "functionOptions": {
+          "max": 250
+        }
+      }
+    },
+    "openapi-v3-info-description-word-check": {
+      "description": "Ensures that all APIs descriptions do not contain certain words.",
+      "message": "The info object description cannot contain the words REST, public, developer.",
+      "given": "$.info.description",
+      "severity": "error",
+      "recommended": true,
+      "type": "style",
+      "formats": [
+        "oas3"
+      ],
+      "then": {
+        "function": "pattern",
+        "functionOptions": {
+          "notMatch": "\\b(REST|Public|Developer)\\b"
+        }
+      }
+    },
+    "openapi-v3-info-contact": {
+      "description": "Ensures that all APIs have contact information.",
+      "message": "API must have a contact information available.",
+      "given": "$.info",
+      "severity": "error",
+      "recommended": true,
+      "type": "style",
+      "formats": [
+        "oas3"
+      ],
+      "then": {
+        "field": "contact",
+        "function": "truthy"
+      }
+    },
+    "openapi-v3-info-contact-name": {
+      "description": "Ensures that all APIs have contact name.",
+      "message": "API must have a contact name available.",
+      "given": "$.info.contact",
+      "severity": "error",
+      "then": {
+        "field": "name",
+        "function": "truthy"
+      }
+    },
+    "openapi-v3-info-contact-email": {
+      "description": "Ensures that all APIs have contact email.",
+      "message": "API must have a contact email available.",
+      "given": "$.info.contact",
+      "severity": "error",
+      "then": {
+        "field": "email",
+        "function": "truthy"
+      }
+    },
+    "openapi-v3-info-contact-url": {
+      "description": "Ensures that all APIs have contact URL.",
+      "message": "API must have a contact URL available.",
+      "given": "$.info.contact",
+      "severity": "error",
+      "then": {
+        "field": "url",
+        "function": "truthy"
+      }
+    },
+    "openapi-v3-info-license": {
+      "description": "Ensures that all OpenAPIs have a information object license.",
+      "message": "The info object should have a license.",
+      "given": "$.info",
+      "severity": "error",
+      "recommended": true,
+      "type": "style",
+      "formats": [
+        "oas3"
+      ],
+      "then": {
+        "field": "license",
+        "function": "truthy"
+      }
+    },
+    "openapi-v3-info-license-name": {
+      "description": "Ensures that all OpenAPIs have a information object license name.",
+      "message": "The info object should have a license name.",
+      "given": "$.info.license",
+      "severity": "error",
+      "then": {
+        "field": "name",
+        "function": "truthy"
+      }
+    },
+    "openapi-v3-info-license-url": {
+      "description": "Ensures that all OpenAPIs have a information object license url.",
+      "message": "The info object should have a license url.",
+      "given": "$.info.license",
+      "severity": "error",
+      "then": {
+        "field": "url",
+        "function": "truthy"
+      }
+    },
+    "openapi-v3-info-license-url-apache": {
+      "description": "Ensures that all OpenAPIs have a information object license url for Apache.",
+      "message": "The info object should have a license url for Apache.",
+      "given": "$.info.license.url",
+      "severity": "error",
+      "then": {
+        "function": "pattern",
+        "functionOptions": {
+          "match": "apache.org"
+        }
+      }
+    },
+    "openapi-v3-info-license-url-mit": {
+      "description": "Ensures that all OpenAPIs have a information object license url for MIT.",
+      "message": "The info object should have a license url for MIT.",
+      "given": "$.info.license.url",
+      "severity": "error",
+      "then": {
+        "function": "pattern",
+        "functionOptions": {
+          "match": "mit.edu"
+        }
+      }
+    },
+    "openapi-v3-info-terms-of-service": {
+      "description": "Ensures that all OpenAPIs have a information object terms of service.",
+      "message": "The info object should have a terms of service.",
+      "given": "$.info",
+      "severity": "error",
+      "recommended": true,
+      "type": "style",
+      "formats": [
+        "oas3"
+      ],
+      "then": {
+        "field": "termsOfService",
+        "function": "truthy"
+      }
+    },
+    "openapi-v3-info-version": {
+      "description": "Ensures that all OpenAPIs have a information object version.",
+      "message": "The info object should have a version.",
+      "given": "$.info",
+      "severity": "error",
+      "recommended": true,
+      "type": "style",
+      "formats": [
+        "oas3"
+      ],
+      "then": {
+        "field": "version",
+        "function": "truthy"
+      }
+    }
+  }
+}
